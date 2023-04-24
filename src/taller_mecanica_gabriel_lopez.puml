@@ -1,0 +1,44 @@
+@startuml
+Entity Mecanico{
+nombre
+rut
+especialidad
+}
+
+Entity Vehiculo{
+placa patente
+marca
+modelo
+color
+kilometraje
+}
+
+Entity Cliente{
+rut
+nombre
+numero cedula de identidad
+}
+
+Entity Actividad{
+duracion
+fecha de realizacion
+descripcion
+}
+
+Entity OrdenDeTrabajo{
+informacion de cliente
+informacion de vehiculo
+detalle de servicio
+costo
+fecha recepcion vehiculo
+fecha de entrega esperada
+estado de orden
+}
+
+Cliente"1"--"1"Vehiculo:posee >
+Cliente"1"--"1..*"OrdenDeTrabajo:solicida >
+OrdenDeTrabajo"1..*"--"1..*"Actividad:contiene >
+Mecanico"1..*"--"1..*"OrdenDeTrabajo:realiza >
+Mecanico"1..*"--"1..*"Vehiculo:trabaja >
+OrdenDeTrabajo"1"--"1"Vehiculo:sometido <
+@enduml
